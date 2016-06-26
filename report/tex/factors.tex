@@ -1,0 +1,107 @@
+\documentclass{minimal}
+\usepackage[a4paper,margin=1cm,landscape]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes,shadows,arrows}
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{5pt}%
+\begin{document}
+\tikzstyle{stepBlock}=[draw, rounded corners,
+         anchor=north, align=center, rectangle split part align={center, left}, rectangle split, rectangle split parts=3]
+\tikzstyle{all}=[draw, rounded corners, text=gray,
+         anchor=north, align=center, rectangle split part align={center, left}, rectangle split, rectangle split parts=3]         
+\tikzstyle{stepArrow}=[->, -diamond, thick,double]
+\tikzstyle{obsArrow}=[->, thick,double]
+        
+\begin{center}
+\begin{tikzpicture}[node distance=3cm]
+\node (1) [stepBlock]                                                                                                                                               
+{\textbf{features}                                                                                                                                                  
+\nodepart{two}\tabular{@{}l}                                                                                                                                        
+\texttt{dataset} \\                                                                                                                                                 
+\texttt{soundIndex} \\                                                                                                                                              
+\texttt{features} \\                                                                                                                                                
+\texttt{framing\_short} \\                                                                                                                                          
+\texttt{framing\_long} \\                                                                                                                                           
+\texttt{preemph} \\                                                                                                                                                 
+\texttt{freqRange} \\                                                                                                                                               
+\endtabular                                                                                                                                                         
+                                                                                                                                                                    
+\nodepart{three}\tabular{@{}l}                                                                                                                                      
+\endtabular};                                                                                                                                                       
+\node (2) [stepBlock, right=of 1]                                                                                                                                   
+{\textbf{norm}                                                                                                                                                      
+\nodepart{two}\tabular{@{}l}                                                                                                                                        
+\texttt{ftrsNorm1} \\                                                                                                                                               
+\texttt{ftrsNorm2} \\                                                                                                                                               
+\texttt{ftrsNorm\_scat\_selection} \\                                                                                                                               
+\texttt{ftrsNorm\_scat\_threshold} \\                                                                                                                               
+\texttt{ftrsSel} \\                                                                                                                                                 
+\texttt{soundIndex2} \\                                                                                                                                             
+\endtabular                                                                                                                                                         
+                                                                                                                                                                    
+\nodepart{three}\tabular{@{}l}                                                                                                                                      
+\endtabular};                                                                                                                                                       
+\node (3) [stepBlock, right=of 2]                                                                                                                                   
+{\textbf{nmf}                                                                                                                                                       
+\nodepart{two}\tabular{@{}l}                                                                                                                                        
+\texttt{sourceSep} \\                                                                                                                                               
+\texttt{nRank} \\                                                                                                                                                   
+\endtabular                                                                                                                                                         
+                                                                                                                                                                    
+\nodepart{three}\tabular{@{}l}                                                                                                                                      
+\endtabular};                                                                                                                                                       
+\node (4) [stepBlock, right=of 3]                                                                                                                                   
+{\textbf{hist}                                                                                                                                                      
+\nodepart{two}\tabular{@{}l}                                                                                                                                        
+\texttt{weighting} \\                                                                                                                                               
+\texttt{cluster\_norm} \\                                                                                                                                           
+\endtabular                                                                                                                                                         
+                                                                                                                                                                    
+\nodepart{three}\tabular{@{}l}                                                                                                                                      
+\endtabular};                                                                                                                                                       
+\node (5) [stepBlock, right=of 4]                                                                                                                                   
+{\textbf{merging}                                                                                                                                                   
+\nodepart{two}\tabular{@{}l}                                                                                                                                        
+\endtabular                                                                                                                                                         
+                                                                                                                                                                    
+\nodepart{three}\tabular{@{}l}                                                                                                                                      
+\endtabular};                                                                                                                                                       
+\node (6) [stepBlock, right=of 5]                                                                                                                                   
+{\textbf{clusterSimilarity}                                                                                                                                         
+\nodepart{two}\tabular{@{}l}                                                                                                                                        
+\texttt{cluster\_sel} \\                                                                                                                                            
+\texttt{similarity} \\                                                                                                                                              
+\texttt{similarity\_nn} \\                                                                                                                                          
+\texttt{similarity\_thresh} \\                                                                                                                                      
+\endtabular                                                                                                                                                         
+                                                                                                                                                                    
+\nodepart{three}\tabular{@{}l}                                                                                                                                      
+\endtabular};                                                                                                                                                       
+\node (7) [stepBlock, right=of 6]                                                                                                                                   
+{\textbf{sceneSimilarity}                                                                                                                                           
+\nodepart{two}\tabular{@{}l}                                                                                                                                        
+\texttt{similarity\_dist} \\                                                                                                                                        
+\endtabular                                                                                                                                                         
+                                                                                                                                                                    
+\nodepart{three}\tabular{@{}l}                                                                                                                                      
+\endtabular};                                                                                                                                                       
+\node (8) [stepBlock, right=of 7]                                                                                                                                   
+{\textbf{metrics}                                                                                                                                                   
+\nodepart{two}\tabular{@{}l}                                                                                                                                        
+\endtabular                                                                                                                                                         
+                                                                                                                                                                    
+\nodepart{three}\tabular{@{}l}                                                                                                                                      
+\endtabular};                                                                                                                                                       
+\draw[obsArrow]   (8.south) -- (8.south) node[midway,text width=3cm,text centered,below] {\textit{map\\pa19\\pa3\\pa5\\pa9}} ;                                      
+\draw[stepArrow]   (1.east) -- (2.west) node[midway,text width=3cm,text centered,below] {\textbf{class\\indSample\\features\\xp\_settings}} ;                       
+\draw[stepArrow]   (2.east) -- (3.west) node[midway,text width=3cm,text centered,below] {\textbf{class\\features\\xp\_settings}} ;                                  
+\draw[stepArrow]   (3.east) -- (4.west) node[midway,text width=3cm,text centered,below] {\textbf{centroid\\class\\params\\prediction\\xp\_settings}} ;              
+\draw[stepArrow]   (4.east) -- (5.west) node[midway,text width=3cm,text centered,below] {\textbf{weight\\xp\_settings}} ;                                           
+\draw[stepArrow]   (5.east) -- (6.west) node[midway,text width=3cm,text centered,below] {\textbf{centroid\\centroidClass\\class\\indSample\\weight\\xp\_settings}} ;
+\draw[stepArrow]   (6.east) -- (7.west) node[midway,text width=3cm,text centered,below] {\textbf{class\\indSample\\simClus\\weight\\xp\_settings}} ;                
+\draw[stepArrow]   (7.east) -- (8.west) node[midway,text width=3cm,text centered,below] {\textbf{A\\class\\indSample\\params}} ;                                    
+\end{tikzpicture}                                                                                                                                                   
+\end{center}                                                                                                                                                        
+\end{document}]                                                                                                                                                     
